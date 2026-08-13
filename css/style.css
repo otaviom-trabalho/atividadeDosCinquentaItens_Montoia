@@ -1,0 +1,367 @@
+/* ==========================================================================
+   PALETA DE CORES
+   Teoria utilizada: cores ANÁLOGAS (tons vizinhos na roda de cores, entre
+   os matizes 5° e 45°): vermelho-alaranjado, laranja e amarelo-dourado.
+   Essa combinação passa uma sensação de energia e "faísca de ideia",
+   que conversa com o tema do site (invenções, luz, progresso).
+   ========================================================================== */
+:root {
+  --cor-primaria: hsl(20, 85%, 55%);     /* laranja - cor principal do site */
+  --cor-secundaria: hsl(5, 75%, 48%);    /* vermelho-alaranjado - análoga à primária */
+  --cor-destaque: hsl(45, 90%, 55%);     /* amarelo-dourado - cor de destaque */
+  --cor-fundo: hsl(30, 45%, 96%);        /* creme claro - fundo da página */
+  --cor-texto: hsl(20, 30%, 14%);        /* marrom quase preto - texto */
+  --cor-clara: hsl(30, 60%, 97%);        /* quase-branco - usado sobre fundos escuros */
+
+  --fonte-titulo: 'Poppins', 'Segoe UI', sans-serif;
+  --fonte-texto: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   RESET BÁSICO E CONFIGURAÇÕES GERAIS (seletores de tag)
+   ========================================================================== */
+* {
+  box-sizing: border-box; /* padding e borda não aumentam a largura definida */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* rolagem suave ao clicar nos links do menu */
+}
+
+body {
+  font-family: var(--fonte-texto);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%; /* impede que a imagem ultrapasse o espaço do container */
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+a {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+}
+
+/* Classe reutilizada para centralizar e limitar a largura do conteúdo */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+#topo {
+  background-color: var(--cor-primaria);
+  color: var(--cor-clara);
+  padding: 3.5rem 0 3rem 0;
+  border-bottom: 6px solid var(--cor-texto); /* borda sólida grossa */
+}
+
+.cabecalho-conteudo {
+  text-align: center;
+}
+
+#topo h1 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.subtitulo {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   MENU DE NAVEGAÇÃO
+   ========================================================================== */
+nav {
+  background-color: var(--cor-texto);
+  position: sticky; /* o menu acompanha a rolagem da página */
+  top: 0;
+  z-index: 10;
+}
+
+.menu {
+  display: flex;             /* uso de flexbox no menu */
+  flex-wrap: wrap;           /* mantém o menu organizado em telas pequenas */
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 2rem;
+  padding: 1rem 1.5rem;
+}
+
+.menu li {
+  list-style: none;
+}
+
+/* Seletor descendente: link "a" que está dentro de "nav" */
+nav a {
+  color: var(--cor-clara);
+  font-weight: 600;
+  padding: 0.4rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--cor-destaque);
+  border-bottom: 2px solid var(--cor-destaque);
+}
+
+/* Compensa a altura do menu fixo ao clicar em um link interno */
+section {
+  scroll-margin-top: 70px;
+}
+
+/* ==========================================================================
+   ÁREA: INÍCIO
+   ========================================================================== */
+#inicio {
+  padding: 4rem 0;
+}
+
+.secao-inicio {
+  display: flex;              /* imagem e texto lado a lado */
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.texto-inicio {
+  flex: 1 1 420px;
+  max-width: 560px;
+}
+
+.texto-inicio h2 {
+  margin-bottom: 1rem;
+}
+
+.texto-inicio p {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.imagem-hero {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Estilo compartilhado por todas as imagens ilustradas do site */
+.imagem-cartao {
+  border-radius: 24px;              /* arredondamento exigido para as imagens */
+  border: 3px solid var(--cor-texto); /* uma das bordas sólidas do site */
+}
+
+/* ==========================================================================
+   ÁREA: INVENÇÕES
+   ========================================================================== */
+#invencoes {
+  padding: 4rem 0;
+  background-color: var(--cor-clara);
+}
+
+#invencoes h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.grade-invencoes {
+  display: grid;                                   /* uso de CSS grid */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.cartao-invencao {
+  background-color: #ffffff;
+  padding: 1.75rem;
+  border: 2px dashed var(--cor-secundaria); /* borda tracejada */
+  border-radius: 18px;
+}
+
+.cartao-invencao img {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cartao-invencao h3 {
+  color: var(--cor-secundaria);
+  margin-bottom: 0.75rem;
+}
+
+.cartao-invencao p {
+  margin-bottom: 0.8rem;
+  font-size: 0.97rem;
+}
+
+.link-externo {
+  font-weight: 600;
+  text-decoration: underline; /* indica visualmente que é um link */
+}
+
+.link-externo:hover {
+  color: var(--cor-primaria);
+}
+
+/* ==========================================================================
+   ÁREA: CURIOSIDADES
+   ========================================================================== */
+#curiosidades {
+  padding: 4rem 0;
+}
+
+.secao-curiosidades {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+}
+
+#curiosidades h2,
+#curiosidades h3 {
+  margin-bottom: 1.2rem;
+}
+
+.lista-curiosidades li {
+  padding: 0.7rem 0;
+  border-bottom: 1px dotted var(--cor-texto); /* borda pontilhada */
+}
+
+.linha-do-tempo {
+  background-color: var(--cor-primaria);
+  color: var(--cor-clara);
+  padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+  border-radius: 16px;
+  border-left: 6px solid var(--cor-destaque); /* espessura de borda diferente */
+}
+
+.linha-do-tempo li {
+  padding: 0.5rem 0;
+}
+
+/* ==========================================================================
+   ÁREA: IMPACTOS SOCIAIS
+   ========================================================================== */
+#impactos {
+  padding: 4rem 0;
+  background-color: var(--cor-texto);
+  color: var(--cor-clara);
+}
+
+#impactos h2 {
+  color: var(--cor-destaque);
+  margin-bottom: 1.5rem;
+}
+
+#impactos p {
+  margin-bottom: 1rem;
+  max-width: 780px;
+}
+
+.lista-impactos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.lista-impactos li {
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-clara);
+  border-top: 6px double var(--cor-texto); /* borda dupla */
+  padding: 2rem 0;
+}
+
+.rodape-conteudo {
+  text-align: center;
+}
+
+.rodape-conteudo p {
+  margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   BOTÃO "VOLTAR AO TOPO" (criado inteiramente pelo JavaScript)
+   ========================================================================== */
+.btn-topo {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%; /* botão redondo */
+  background-color: var(--cor-secundaria);
+  color: var(--cor-clara);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* Começa invisível: só aparece quando o JS adicionar a classe "visivel" */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+}
+
+.btn-topo.visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.btn-topo:hover {
+  background-color: var(--cor-destaque);
+  color: var(--cor-texto);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE - telas menores (celulares)
+   ========================================================================== */
+@media (max-width: 700px) {
+  .secao-curiosidades {
+    grid-template-columns: 1fr; /* empilha as colunas em telas pequenas */
+  }
+
+  .menu {
+    gap: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .secao-inicio {
+    text-align: center;
+  }
+
+  .texto-inicio p {
+    text-align: left;
+  }
+}
